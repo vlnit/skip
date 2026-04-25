@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Skip the Drama — Stop Getting Caught in the Same Conversations</title>
+  <meta name="description" content="Name manipulation tactics in seconds. Train your response. Get out of the loop." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #090E18;
+      --s1:       #101825;
+      --s2:       #172033;
+      --blue:     #2563EB;
+      --cyan:     #06B6D4;
+      --amber:    #F59E0B;
+      --green:    #10B981;
+      --red:      #EF4444;
+      --purple:   #8B5CF6;
+      --text:     #C8D6E5;
+      --muted:    #6B8EA8;
+      --border:   rgba(255,255,255,0.07);
+      --font:     'Inter', system-ui, sans-serif;
+      --mono:     'JetBrains Mono', monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: var(--text); font-family: var(--font); line-height: 1.6; overflow-x: hidden; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: rgba(9,14,24,.9); backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-size: 17px; font-weight: 800; color: #fff; letter-spacing: -.3px; }
+    .logo span { color: var(--red); }
+    .nav-links { display: flex; align-items: center; gap: 32px; }
+    .nav-links a { font-size: 14px; font-weight: 500; color: var(--muted); transition: color .2s; }
+    .nav-links a:hover { color: #fff; }
+    .nav-cta {
+      background: var(--blue); color: #fff; font-size: 14px; font-weight: 700;
+      padding: 10px 22px; border-radius: 10px; transition: opacity .2s, transform .15s;
+    }
+    .nav-cta:hover { opacity: .85; transform: translateY(-1px); }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center; padding: 140px 24px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow {
+      position: absolute; top: 30%; left: 50%; transform: translateX(-50%);
+      width: 700px; height: 400px; pointer-events: none;
+      background: radial-gradient(ellipse, rgba(37,99,235,.16) 0%, transparent 68%);
+    }
+    .hero-eyebrow {
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 2.5px; color: var(--blue);
+      border: 1px solid rgba(37,99,235,.4); border-radius: 20px;
+      padding: 5px 16px; display: inline-block; margin-bottom: 32px;
+    }
+    h1 {
+      font-size: clamp(42px, 6.5vw, 76px); font-weight: 900;
+      letter-spacing: -2.5px; line-height: 1.05; color: #fff; margin-bottom: 10px;
+    }
+    h1 em { font-style: normal; color: var(--red); }
+    .hero-sub {
+      font-size: clamp(16px, 2vw, 19px); color: var(--muted);
+      max-width: 500px; margin: 16px auto 40px; line-height: 1.65;
+    }
+    .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: #fff; font-size: 16px; font-weight: 700;
+      padding: 16px 30px; border-radius: 13px;
+      display: inline-flex; align-items: center; gap: 8px;
+      transition: opacity .2s, transform .15s;
+    }
+    .btn-primary:hover { opacity: .85; transform: translateY(-2px); }
+    .btn-ghost {
+      background: rgba(255,255,255,.05); color: var(--text);
+      font-size: 16px; font-weight: 600; padding: 16px 30px;
+      border-radius: 13px; border: 1px solid var(--border);
+      transition: background .2s, transform .15s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,.09); transform: translateY(-2px); }
+    .tactic-cloud {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 9px;
+      margin-top: 60px; max-width: 680px;
+    }
+    .t-tag {
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 1.4px; padding: 6px 13px; border-radius: 20px;
+      border: 1px solid currentColor; opacity: .65;
+    }
+
+    /* ── SHARED ── */
+    section { padding: 96px 24px; }
+    .container { max-width: 1080px; margin: 0 auto; }
+    .s-label {
+      font-family: var(--mono); font-size: 10px; font-weight: 700;
+      letter-spacing: 2px; color: var(--muted); margin-bottom: 14px;
+    }
+    .s-title {
+      font-size: clamp(30px, 4vw, 52px); font-weight: 900;
+      letter-spacing: -1.5px; color: #fff; line-height: 1.1; margin-bottom: 16px;
+    }
+    .s-sub { font-size: 17px; color: var(--muted); max-width: 520px; line-height: 1.7; }
+
+    /* ── REVEAL ── */
+    .ri {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .ri.on { opacity: 1; transform: none; }
+
+    /* ── PAIN ── */
+    .pain { background: var(--s1); }
+    .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; margin-top: 56px; }
+    .pain-list { display: flex; flex-direction: column; gap: 22px; }
+    .pain-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      opacity: 0; transform: translateX(-14px);
+      transition: opacity .45s ease, transform .45s ease;
+    }
+    .pain-item.on { opacity: 1; transform: none; }
+    .pain-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--red); margin-top: 9px; flex-shrink: 0; }
+    .pain-text { font-size: 16px; font-weight: 500; color: rgba(255,255,255,.8); line-height: 1.6; }
+
+    /* Decode demo */
+    .decode-box {
+      background: var(--s2); border: 1px solid var(--border); border-radius: 20px;
+      padding: 28px; position: relative; overflow: hidden;
+    }
+    .decode-box::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .d-label { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 14px; }
+    .d-examples { min-height: 220px; position: relative; }
+    .d-example { display: none; }
+    .d-example.active { display: block; }
+    .d-bubble {
+      background: var(--s1); border: 1px solid var(--border); border-radius: 12px;
+      padding: 12px 15px; font-size: 14px; color: rgba(255,255,255,.82);
+      line-height: 1.55; margin-bottom: 14px;
+    }
+    .d-tactic { display: flex; align-items: center; gap: 7px; margin-bottom: 9px; }
+    .d-tname { font-family: var(--mono); font-size: 11px; font-weight: 700; letter-spacing: 1.2px; }
+    .d-exp { font-size: 13px; color: var(--muted); line-height: 1.55; margin-bottom: 12px; }
+    .d-scripts { display: flex; flex-direction: column; gap: 7px; }
+    .d-script {
+      font-size: 13px; font-weight: 600; color: rgba(255,255,255,.72);
+      background: rgba(255,255,255,.05); border: 1px solid var(--border);
+      border-radius: 8px; padding: 8px 12px;
+    }
+    .d-dots { display: flex; gap: 6px; justify-content: center; margin-top: 16px; }
+    .d-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--border); cursor: pointer; transition: background .2s; }
+    .d-dot.on { background: var(--red); }
+
+    /* ── HOW IT WORKS ── */
+    .how { background: var(--bg); }
+    .how-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 52px; }
+    .how-card {
+      background: var(--s1); border: 1px solid var(--border); border-radius: 20px;
+      padding: 30px; transition: border-color .2s;
+    }
+    .how-card:hover { border-color: rgba(255,255,255,.13); }
+    .how-icon { font-size: 26px; margin-bottom: 18px; }
+    .how-tag { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 1.8px; margin-bottom: 9px; }
+    .how-title { font-size: 19px; font-weight: 800; color: #fff; margin-bottom: 9px; }
+    .how-desc { font-size: 14px; color: var(--muted); line-height: 1.65; }
+
+    /* ── TACTIC CARDS ── */
+    .tactics { background: var(--s1); }
+    .tc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin-top: 52px; }
+    .tc {
+      background: var(--bg); border-radius: 16px; padding: 22px;
+      position: relative; overflow: hidden;
+    }
+    .tc::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px; }
+    .tc-head { display: flex; align-items: center; gap: 7px; margin-bottom: 13px; }
+    .tc-bolt { font-size: 10px; }
+    .tc-name { font-family: var(--mono); font-size: 10px; font-weight: 700; letter-spacing: 1.5px; }
+    .tc-quote { font-size: 13px; font-style: italic; line-height: 1.55; color: rgba(255,255,255,.68); margin-bottom: 14px; }
+    .tc-line { height: 1px; background: rgba(255,255,255,.06); margin-bottom: 13px; }
+    .tc-wlabel { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 1.2px; color: var(--muted); margin-bottom: 6px; }
+    .tc-why { font-size: 13px; font-weight: 500; color: rgba(255,255,255,.55); line-height: 1.55; }
+
+    /* ── SCENARIO DEMO ── */
+    .training { background: var(--bg); }
+    .scenario-wrap {
+      max-width: 500px; margin: 56px auto 0;
+      background: var(--s1); border: 1px solid var(--border); border-radius: 22px;
+      padding: 32px; position: relative; overflow: hidden;
+    }
+    .scenario-wrap::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blue), transparent);
+    }
+    .sc-label { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 10px; }
+    .sc-bubble { display: flex; align-items: flex-end; gap: 10px; margin-bottom: 26px; }
+    .sc-avatar {
+      width: 30px; height: 30px; border-radius: 50%; background: rgba(255,255,255,.07);
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 13px;
+    }
+    .sc-msg { background: var(--s2); border-radius: 14px; padding: 11px 14px; font-size: 14px; color: rgba(255,255,255,.82); line-height: 1.5; }
+    .sc-responses-label { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: 1.5px; color: var(--muted); margin-bottom: 11px; }
+    .sc-options { display: flex; flex-direction: column; gap: 8px; }
+    .sc-opt {
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 11px 13px; border-radius: 11px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.06);
+      transition: all .4s ease;
+    }
+    .sc-opt.lit { background: rgba(16,185,129,.11); border-color: rgba(16,185,129,.42); box-shadow: 0 0 18px rgba(16,185,129,.12); }
+    .sc-opt.lit .sc-txt { color: #fff; }
+    .sc-txt { font-size: 14px; color: rgba(255,255,255,.45); line-height: 1.4; }
+    .sc-ql { font-family: var(--mono); font-size: 9px; font-weight: 700; letter-spacing: .8px; white-space: nowrap; transition: opacity .4s; }
+    .sc-ql.av { color: var(--red); opacity: .35; }
+    .sc-ql.ok { color: var(--amber); opacity: .35; }
+    .sc-ql.bm { color: var(--green); opacity: .35; }
+    .sc-opt.lit .sc-ql.bm { opacity: 1; }
+    .sc-caption { text-align: center; margin-top: 20px; font-size: 13px; color: var(--muted); line-height: 1.55; opacity: 0; transition: opacity .5s .3s; }
+    .sc-caption.on { opacity: 1; }
+
+    /* ── TESTIMONIALS ── */
+    .social { background: var(--s1); }
+    .t-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 52px; }
+    .t-card { background: var(--bg); border: 1px solid var(--border); border-radius: 16px; padding: 26px; }
+    .t-stars { color: var(--amber); font-size: 12px; margin-bottom: 13px; letter-spacing: 2px; }
+    .t-quote { font-size: 14px; line-height: 1.7; color: rgba(255,255,255,.7); margin-bottom: 16px; }
+    .t-handle { font-size: 12px; color: var(--muted); font-weight: 600; }
+
+    /* ── CTA ── */
+    .cta-section { text-align: center; padding: 120px 24px; position: relative; overflow: hidden; }
+    .cta-glow {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      width: 500px; height: 320px; pointer-events: none;
+      background: radial-gradient(ellipse, rgba(37,99,235,.15) 0%, transparent 70%);
+    }
+    .cta-section h2 {
+      font-size: clamp(36px, 5.5vw, 64px); font-weight: 900;
+      letter-spacing: -2px; color: #fff; line-height: 1.08; margin-bottom: 18px;
+    }
+    .cta-section p { font-size: 18px; color: var(--muted); margin-bottom: 40px; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .store-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .store-btn {
+      background: #fff; color: #000; padding: 14px 28px; border-radius: 12px;
+      display: inline-flex; align-items: center; gap: 11px; font-weight: 700; font-size: 15px;
+      transition: opacity .2s, transform .15s;
+    }
+    .store-btn:hover { opacity: .88; transform: translateY(-2px); }
+    .store-btn-icon { font-size: 22px; }
+    .store-btn-sub { font-size: 11px; font-weight: 500; color: #666; display: block; }
+    .cta-fine { margin-top: 18px; font-size: 13px; color: var(--muted); }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 32px 48px; border-top: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
+      font-size: 13px; color: var(--muted); flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo { font-weight: 800; color: #fff; font-size: 15px; }
+    .footer-links { display: flex; gap: 24px; }
+    .footer-links a { color: var(--muted); transition: color .2s; }
+    .footer-links a:hover { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    /* ── HERO QUOTE ── */
+    .hero-quote {
+      margin-top: 44px; max-width: 540px; text-align: center;
+      border-top: 1px solid var(--border); padding-top: 28px;
+    }
+    .hero-quote-text {
+      font-size: 15px; font-style: italic; color: rgba(255,255,255,.55);
+      line-height: 1.7; margin-bottom: 9px;
+    }
+    .hero-quote-attr { font-size: 12px; font-weight: 600; color: var(--muted); font-family: var(--mono); letter-spacing: 1px; }
+    .hero-quote-text, .hero-quote-attr { transition: opacity .4s ease; }
+
+    @media (max-width: 800px) {
+      nav { padding: 16px 20px; }
+      .nav-links { display: none; }
+      .pain-grid, .how-grid { grid-template-columns: 1fr; gap: 40px; }
+      .tc-grid, .t-grid { grid-template-columns: 1fr; }
+      footer { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      h1 { letter-spacing: -1.2px; }
+      .tactic-cloud { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">skip the <span>drama.</span></div>
+  <div class="nav-links">
+    <a href="#how">How it works</a>
+    <a href="#tactics">Tactics</a>
+    <a href="#training">Training</a>
+  </div>
+  <a href="#download" class="nav-cta">Get the App</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">PSYCHOLOGICAL SELF-DEFENSE</div>
+  <h1>The drama only works<br>if you don't see it <em>coming.</em></h1>
+  <p class="hero-sub">Name manipulation tactics in seconds. Train your response. Get out of the loop — for good.</p>
+  <div class="hero-btns">
+    <a href="#download" class="btn-primary">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+      Download on iOS
+    </a>
+    <a href="#training" class="btn-ghost">See how it works ↓</a>
+  </div>
+  <div class="tactic-cloud">
+    <span class="t-tag" style="color:var(--red)">GUILT TRIP</span>
+    <span class="t-tag" style="color:var(--purple)">DARVO</span>
+    <span class="t-tag" style="color:var(--amber)">SILENT TREATMENT</span>
+    <span class="t-tag" style="color:var(--cyan)">LOVE BOMBING</span>
+    <span class="t-tag" style="color:#60A5FA">GASLIGHTING</span>
+    <span class="t-tag" style="color:#818CF8">TRIANGULATION</span>
+    <span class="t-tag" style="color:var(--red)">BLAME SHIFTING</span>
+    <span class="t-tag" style="color:var(--purple)">MANUFACTURED CRISIS</span>
+    <span class="t-tag" style="color:var(--amber)">CREDIT STEALING</span>
+    <span class="t-tag" style="color:var(--cyan)">PASSIVE AGGRESSION</span>
+    <span class="t-tag" style="color:#60A5FA">EMOTIONAL BLACKMAIL</span>
+    <span class="t-tag" style="color:#818CF8">BREADCRUMBING</span>
+  </div>
+  <div class="hero-quote">
+    <p class="hero-quote-text" id="heroQuoteText"></p>
+    <p class="hero-quote-attr" id="heroQuoteAttr"></p>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="container">
+    <div class="pain-grid">
+      <div>
+        <p class="s-label ri">SOUND FAMILIAR?</p>
+        <h2 class="s-title ri">You've been in these conversations.</h2>
+        <div class="pain-list" style="margin-top:28px;" id="painList">
+          <div class="pain-item">
+            <div class="pain-dot"></div>
+            <p class="pain-text">They sigh. You immediately wonder what you did wrong — before they say a word.</p>
+          </div>
+          <div class="pain-item">
+            <div class="pain-dot"></div>
+            <p class="pain-text">You replay it for three days and still can't explain why it bothered you so much.</p>
+          </div>
+          <div class="pain-item">
+            <div class="pain-dot"></div>
+            <p class="pain-text">You said something softer than you meant. They heard agreement. It happened again.</p>
+          </div>
+          <div class="pain-item">
+            <div class="pain-dot"></div>
+            <p class="pain-text">By the time you raised it, it came out wrong. Somehow you became the problem.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live decode demo -->
+      <div class="decode-box ri">
+        <p class="d-label">SKIP THE DRAMA DECODES IN REAL TIME</p>
+        <div class="d-examples" id="demoWrap"></div>
+        <div class="d-dots" id="demoDots"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="how">
+  <div class="container">
+    <p class="s-label ri">HOW IT WORKS</p>
+    <h2 class="s-title ri">Four things that close the gap.</h2>
+    <p class="s-sub ri">Each one is useful on its own. Together, they shorten the time between when it happens and when you know exactly what to do about it.</p>
+    <div class="how-grid" style="margin-top:52px;">
+      <div class="how-card ri" style="transition-delay:.0s">
+        <div class="how-icon">🎬</div>
+        <p class="how-tag" style="color:var(--purple)">REEL TO REAL</p>
+        <h3 class="how-title">Train on people you already know.</h3>
+        <p class="how-desc">Roy Roy. Walter White. Characters from shows you've already watched. You learn to spot the tactic on them first — then you start hearing it in your own conversations.</p>
+      </div>
+      <div class="how-card ri" style="transition-delay:.07s">
+        <div class="how-icon">⚡</div>
+        <p class="how-tag" style="color:var(--red)">DECODE</p>
+        <h3 class="how-title">Paste any message. Get the name.</h3>
+        <p class="how-desc">Drop a text, describe a conversation, or paste what they said. The AI names the tactic in seconds — and tells you why it works on <em>you</em> specifically, not just people in general.</p>
+      </div>
+      <div class="how-card ri" style="transition-delay:.14s">
+        <div class="how-icon">👥</div>
+        <p class="how-tag" style="color:var(--blue)">CAST</p>
+        <h3 class="how-title">Build profiles on the people in your life.</h3>
+        <p class="how-desc">Add someone. Log each incident as it happens. The AI maps their tactics and archetype across every story — and identifies your specific blind spot with them.</p>
+      </div>
+      <div class="how-card ri" style="transition-delay:.21s">
+        <div class="how-icon">🎯</div>
+        <p class="how-tag" style="color:var(--amber)">PREP</p>
+        <h3 class="how-title">Walk in with scripts, not hopes.</h3>
+        <p class="how-desc">Hard conversation coming up? The AI builds three scripts from their pattern and yours — with their likely pushback and your follow-up already mapped out.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TACTIC CARDS -->
+<section id="tactics" class="tactics">
+  <div class="container">
+    <p class="s-label ri">YOUR BLIND SPOTS</p>
+    <h2 class="s-title ri">Named. Explained.<br>No longer free to land.</h2>
+    <p class="s-sub ri">21 tactics covering guilt, silence, gaslighting, power plays, and more. Each one explained with the specific reason it worked on you — not just what it is.</p>
+    <div class="tc-grid" style="margin-top:52px;">
+
+      <div class="tc ri" style="border:1px solid rgba(220,38,38,.2);transition-delay:.0s">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#DC2626,transparent)"></div>
+        <div class="tc-head"><span class="tc-bolt" style="color:#DC2626">⚡</span><span class="tc-name" style="color:#DC2626">DARVO</span></div>
+        <p class="tc-quote">"I can't believe you'd attack me when I was just trying to help you."</p>
+        <div class="tc-line"></div>
+        <p class="tc-wlabel">WHY THE DRAMA WORKS ON YOU</p>
+        <p class="tc-why">They flip into the victim before you finish your sentence. You end up apologising for raising a legitimate concern.</p>
+      </div>
+
+      <div class="tc ri" style="border:1px solid rgba(124,58,237,.2);transition-delay:.07s">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#7C3AED,transparent)"></div>
+        <div class="tc-head"><span class="tc-bolt" style="color:#7C3AED">⚡</span><span class="tc-name" style="color:#7C3AED">GASLIGHTING</span></div>
+        <p class="tc-quote">"I never said that. I think you're misremembering it."</p>
+        <div class="tc-line"></div>
+        <p class="tc-wlabel">WHY THE DRAMA WORKS ON YOU</p>
+        <p class="tc-why">You trust their version of events over your own clear memory. The doubt arrives before the reasoning does.</p>
+      </div>
+
+      <div class="tc ri" style="border:1px solid rgba(239,68,68,.2);transition-delay:.14s">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#EF4444,transparent)"></div>
+        <div class="tc-head"><span class="tc-bolt" style="color:#EF4444">⚡</span><span class="tc-name" style="color:#EF4444">GUILT TRIP</span></div>
+        <p class="tc-quote">"After everything I've done for you, I just thought you'd be there."</p>
+        <div class="tc-line"></div>
+        <p class="tc-wlabel">WHY THE DRAMA WORKS ON YOU</p>
+        <p class="tc-why">You carry their emotional weight as if it's yours to fix. The guilt arrives before the facts do.</p>
+      </div>
+
+      <div class="tc ri" style="border:1px solid rgba(155,142,255,.2);transition-delay:.21s">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#9B8EFF,transparent)"></div>
+        <div class="tc-head"><span class="tc-bolt" style="color:#9B8EFF">⚡</span><span class="tc-name" style="color:#9B8EFF">SILENT TREATMENT</span></div>
+        <p class="tc-quote">"Fine. Don't worry about it. I'll manage."</p>
+        <div class="tc-line"></div>
+        <p class="tc-wlabel">WHY THE DRAMA WORKS ON YOU</p>
+        <p class="tc-why">You work to restore peace they're deliberately withholding. They know you'll always reach first.</p>
+      </div>
+
+      <div class="tc ri" style="border:1px solid rgba(255,159,67,.2);transition-delay:.28s">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#FF9F43,transparent)"></div>
+        <div class="tc-head"><span class="tc-bolt" style="color:#FF9F43">⚡</span><span class="tc-name" style="color:#FF9F43">LOVE BOMBING</span></div>
+        <p class="tc-quote">"You're the only person who truly gets me. I've never trusted anyone like this."</p>
+        <div class="tc-line"></div>
+        <p class="tc-wlabel">WHY THE DRAMA WORKS ON YOU</p>
+        <p class="tc-why">The intensity maps to your empathy and feels earned — not calculated. By the time you see it, you're already in it.</p>
+      </div>
+
+      <div class="tc ri" style="border:1px solid rgba(162,155,254,.2);transition-delay:.35s">
+        <div style="position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#A29BFE,transparent)"></div>
+        <div class="tc-head"><span class="tc-bolt" style="color:#A29BFE">⚡</span><span class="tc-name" style="color:#A29BFE">CREDIT STEALING</span></div>
+        <p class="tc-quote">"Couldn't have done this without the whole team 🙌"</p>
+        <div class="tc-line"></div>
+        <p class="tc-wlabel">WHY THE DRAMA WORKS ON YOU</p>
+        <p class="tc-why">You let it go to keep the peace. They know that. It happens again — slightly different next time.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- SCENARIO TRAINING -->
+<section id="training" class="training">
+  <div class="container" style="text-align:center">
+    <p class="s-label ri" style="justify-content:center;display:flex">THE TRAINING</p>
+    <h2 class="s-title ri">Real scenarios.<br>Real choices.</h2>
+    <p class="s-sub ri" style="margin:0 auto 0">You practice until skipping the drama is faster than getting caught in it.</p>
+    <div class="scenario-wrap ri" id="scenarioWrap">
+      <p class="sc-label">INCOMING MESSAGE</p>
+      <div class="sc-bubble">
+        <div class="sc-avatar">👤</div>
+        <div class="sc-msg">After everything I've sacrificed for you, I can't believe you'd put yourself first here.</div>
+      </div>
+      <p class="sc-responses-label">YOUR MOVE</p>
+      <div class="sc-options">
+        <div class="sc-opt" id="opt-avoid">
+          <span class="sc-txt">I'm so sorry. You're right — I should have thought about you.</span>
+          <span class="sc-ql av">AVOID THIS</span>
+        </div>
+        <div class="sc-opt" id="opt-okay">
+          <span class="sc-txt">I hear that this is hard for you.</span>
+          <span class="sc-ql ok">ACCEPTABLE</span>
+        </div>
+        <div class="sc-opt" id="opt-best">
+          <span class="sc-txt">I love you. This decision is still mine to make.</span>
+          <span class="sc-ql bm">BEST MOVE</span>
+        </div>
+      </div>
+      <p class="sc-caption" id="scCaption">You train on this until the best response is your first instinct — not your third thought.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="social">
+  <div class="container">
+    <p class="s-label ri">WHAT PEOPLE SAY</p>
+    <h2 class="s-title ri">The gap closes.</h2>
+    <div class="t-grid" style="margin-top:52px;">
+      <div class="t-card ri" style="transition-delay:.0s">
+        <p class="t-stars">★★★★★</p>
+        <p class="t-quote">"I used to apologise before I even understood what happened. Three months in, I named it mid-sentence and held my ground for the first time in years."</p>
+        <p class="t-handle">— Lauren M., London</p>
+      </div>
+      <div class="t-card ri" style="transition-delay:.07s">
+        <p class="t-stars">★★★★★</p>
+        <p class="t-quote">"I thought I was the problem. Turns out I'd been dealing with DARVO for two years without a name for it. Knowing what to call it was the whole thing."</p>
+        <p class="t-handle">— James T., New York</p>
+      </div>
+      <div class="t-card ri" style="transition-delay:.14s">
+        <p class="t-stars">★★★★★</p>
+        <p class="t-quote">"The scenario training is different. You're not reading about it — you're practicing the response until it becomes automatic. Nothing else does this."</p>
+        <p class="t-handle">— Sofia R., Sydney</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="download" class="cta-section">
+  <div class="cta-glow"></div>
+  <p class="s-label ri" style="display:inline-block;margin-bottom:18px">START TODAY</p>
+  <h2 class="ri">The loop breaks<br>when you see it.</h2>
+  <p class="ri">Take the 3-minute quiz. Get your pattern. Start skipping the drama today.</p>
+  <div class="store-btns ri">
+    <a href="#" class="store-btn">
+      <span class="store-btn-icon">🍎</span>
+      <div>
+        <span class="store-btn-sub">Download on the</span>
+        App Store
+      </div>
+    </a>
+  </div>
+  <p class="cta-fine ri">Available on iOS</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">skip the drama.</span>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Support</a>
+  </div>
+  <span style="font-size:13px;color:var(--muted)">© 2026 Skip the Drama</span>
+</footer>
+
+<script>
+// ── Rolling hero quote ────────────────────────────────────────
+const heroQuotes = [
+  { text: "I left that relationship convinced I was the problem. I wasn't. I just didn't know what I was dealing with.", attr: "— Megan C., Boston" },
+  { text: "I apologised to someone who was manipulating me. For two years. I didn't even know there was a name for what they were doing.", attr: "— Rachel K., Chicago" },
+  { text: "I used to think I was too emotional. Now I know I was just the only one in the room without a script.", attr: "— Claire D., Toronto" }
+];
+let hq = 0;
+function setHeroQuote(idx, animate) {
+  const t = document.getElementById('heroQuoteText');
+  const a = document.getElementById('heroQuoteAttr');
+  if (!t || !a) return;
+  if (animate) {
+    t.style.opacity = '0'; a.style.opacity = '0';
+    setTimeout(() => {
+      t.textContent = '\u201C' + heroQuotes[idx].text + '\u201D';
+      a.textContent = heroQuotes[idx].attr;
+      t.style.opacity = '1'; a.style.opacity = '1';
+    }, 420);
+  } else {
+    t.textContent = '\u201C' + heroQuotes[idx].text + '\u201D';
+    a.textContent = heroQuotes[idx].attr;
+  }
+}
+setHeroQuote(0, false);
+setInterval(() => { hq = (hq + 1) % heroQuotes.length; setHeroQuote(hq, true); }, 5000);
+
+// ── Scroll reveal (scroll event, reliable everywhere) ─────────
+function reveal() {
+  document.querySelectorAll('.ri').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) {
+      el.classList.add('on');
+    }
+  });
+}
+window.addEventListener('scroll', reveal, { passive: true });
+reveal(); // run immediately on load
+
+// Pain items stagger on scroll
+function revealPain() {
+  const list = document.getElementById('painList');
+  if (!list) return;
+  if (list.getBoundingClientRect().top < window.innerHeight * 0.85) {
+    list.querySelectorAll('.pain-item').forEach((item, i) => {
+      setTimeout(() => item.classList.add('on'), i * 160);
+    });
+    window.removeEventListener('scroll', revealPain);
+  }
+}
+window.addEventListener('scroll', revealPain, { passive: true });
+revealPain();
+
+// ── Decode demo ───────────────────────────────────────────────
+const demos = [
+  {
+    msg: "I'm only saying this because I care about you.",
+    color: "#EF4444", tactic: "GUILT TRIP",
+    exp: "Framing concern as justification to override your judgment. The care may be real — it's also being used as leverage.",
+    scripts: ['"I hear that. My decision stands."', '"Thanks. I\'ve thought this through."']
+  },
+  {
+    msg: "I never said that. You must be misremembering it.",
+    color: "#7C3AED", tactic: "GASLIGHTING",
+    exp: "Denying a clear event to replace your reality with theirs. The goal is doubt, not accuracy.",
+    scripts: ['"I know what I heard."', '"We remember it differently. Let\'s move forward."']
+  },
+  {
+    msg: "I can't believe you'd attack me when I was trying to help.",
+    color: "#DC2626", tactic: "DARVO",
+    exp: "Deny, Attack, Reverse Victim & Offender. They become the victim so you apologise for raising the issue.",
+    scripts: ['"I raised this calmly. I\'m not attacking you."', '"We\'re not done talking about this."']
+  },
+  {
+    msg: "Fine. Whatever. I'll figure it out myself.",
+    color: "#9B8EFF", tactic: "SILENT TREATMENT",
+    exp: "Withdrawing communication as pressure — no confrontation needed. You reach first every time.",
+    scripts: ['"I\'m here when you want to talk."', '"I\'m not going to chase. Take the time you need."']
+  },
+  {
+    msg: "Great team effort on this one 🙌 Really proud of everyone.",
+    color: "#A29BFE", tactic: "CREDIT STEALING",
+    exp: "Absorbing individual work into a collective win. Raising it publicly makes you look difficult — and they know it.",
+    scripts: ['"I led that project. Happy to walk through it."', '"That work was mine. Credit matters to me."']
+  }
+];
+
+let cur = 0, timer;
+
+function buildDemo() {
+  const wrap = document.getElementById('demoWrap');
+  const dots = document.getElementById('demoDots');
+  if (!wrap || !dots) return;
+  wrap.innerHTML = '';
+  dots.innerHTML = '';
+  demos.forEach((d, i) => {
+    const div = document.createElement('div');
+    div.className = 'd-example' + (i === cur ? ' active' : '');
+    div.innerHTML = `
+      <div class="d-bubble">${d.msg}</div>
+      <div class="d-tactic">
+        <span style="color:${d.color};font-size:11px">⚡</span>
+        <span class="d-tname" style="color:${d.color}">${d.tactic}</span>
+      </div>
+      <p class="d-exp">${d.exp}</p>
+      <div class="d-scripts">${d.scripts.map(s=>`<div class="d-script">${s}</div>`).join('')}</div>
+    `;
+    wrap.appendChild(div);
+    const dot = document.createElement('div');
+    dot.className = 'd-dot' + (i === cur ? ' on' : '');
+    dot.onclick = () => { cur = i; buildDemo(); resetTimer(); };
+    dots.appendChild(dot);
+  });
+}
+
+function resetTimer() {
+  clearInterval(timer);
+  timer = setInterval(() => { cur = (cur + 1) % demos.length; buildDemo(); }, 4200);
+}
+
+buildDemo();
+resetTimer();
+
+// ── Scenario best move highlight on scroll ────────────────────
+function checkScenario() {
+  const wrap = document.getElementById('scenarioWrap');
+  if (!wrap) return;
+  if (wrap.getBoundingClientRect().top < window.innerHeight * 0.75) {
+    setTimeout(() => {
+      const best = document.getElementById('opt-best');
+      if (best && !best.classList.contains('lit')) {
+        best.classList.add('lit');
+        setTimeout(() => {
+          const cap = document.getElementById('scCaption');
+          if (cap) cap.classList.add('on');
+        }, 700);
+      }
+    }, 900);
+    window.removeEventListener('scroll', checkScenario);
+  }
+}
+window.addEventListener('scroll', checkScenario, { passive: true });
+checkScenario();
+</script>
+</body>
+</html>
